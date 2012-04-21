@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require "../InitEnv.rb"
+require "Enet.so"
+
+require "Server.rb"
+
+server = Server.new
+server.setup
+while(true)
+	server.update
+end

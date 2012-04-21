@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require "../InitEnv.rb"
+require "Enet.so"
+
+require "Client.rb"
+
+client = Client.new
+client.setup
+client.connect
+while(true)
+	client.update
+end
