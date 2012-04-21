@@ -1,7 +1,7 @@
 
 class Server
   def initialize()
-    if (Enet::enet_initialize() != 0)
+    if (ENet::enet_initialize() != 0)
       puts "An error occurred while initializing ENet"
       return
     end	
@@ -10,12 +10,12 @@ class Server
   end
 
   def setup()
-    address = Enet::ENetAddress.new
-    address.host = Enet::ENET_HOST_ANY
+    address = ENet::ENetAddress.new
+    address.host = ENet::ENET_HOST_ANY
     # Bind the server to port 1234. 
     address.port = 1234
 
-    @server = Enet::enet_host_create(address, 32, 2, 0, 0)
+    @server = ENet::enet_host_create(address, 32, 2, 0, 0)
     if (@server == nil)
       puts "An error occurred while trying to create an ENet server host."
       return
@@ -23,15 +23,23 @@ class Server
   end
 
   def update()
-    event = Enet::ENetEvent.new
-    while (Enet::enet_host_service(@server, event, 1000) > 0)
+    event = ENet::ENetEvent.new
+    while (ENet::enet_host_service(@server, event, 1000) > 0)
       case event.type
-      when Enet::ENET_EVENT_TYPE_CONNECT
+      when ENet::ENET_EVENT_TYPE_CONNECT
         puts "A new client connected"
-      when Enet::ENET_EVENT_TYPE_RECEIVE
+
+        @peer = event.peer
+
+        sendString = "packet"
+        packet = ENet::enet_packet_create(sendString, sendString.length + 1, ENet::ENET_PACKET_FLAG_RELIABLE)
+
+        ENet::enet_peer_send(@peer, 0, packet);
+
+      when ENet::ENET_EVENT_TYPE_RECEIVE
         puts "A packet was received",
         enet_packet_destroy(event.packet);
-      when Enet::ENET_EVENT_TYPE_DISCONNECT
+      when ENet::ENET_EVENT_TYPE_DISCONNECT
         puts "disconected."
       end
     end

@@ -39,4 +39,4 @@ $srcs = ["interface/enet_wrap.c"]
 $objs = $srcs.collect {|o| o.sub(/\.c/, ".o")}
 $cleanfiles = $objs
 
-create_makefile('Enet')
+create_makefile('ENet')

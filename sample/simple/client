@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "../InitEnv.rb"
-require "Enet.so"
+require "ENet.so"
 
 require "Client.rb"
 
