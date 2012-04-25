@@ -12,6 +12,7 @@ libPath  = topDir  + "/build/lib"
 extPath  = libPath + "/" + LocalConfig::getExecPlatform().to_s
 ldLibPath = "#{extPath}/Enet"
 
+
 # needed by dynamic library.
 if (/mingw/ =~ RUBY_PLATFORM)
   if (ENV["PATH"] == nil)

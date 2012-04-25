@@ -1,24 +1,15 @@
 require 'mkmf'
-require './LocalConfig.rb'
+require '../tool/LocalConfig.rb'
 
 topDir = File.dirname(File.dirname(File.expand_path(__FILE__)))
 execPlatform = LocalConfig::getExecPlatform().to_s
-siteLib = topDir + "/build/lib/"
-siteLibArch = siteLib + execPlatform
-extlib = "../extlib"
 
-BUILD = "#{extlib}/build"
-ENET_INC = "-I#{BUILD}/include/ -I#{BUILD}/include/enet/"
-ENET_LIB = "-rdynamic #{BUILD}/lib/libenet.so -Wl,-rpath,#{BUILD}/lib"
-BUILD_LIB_PATH = "#{BUILD}/lib/"
+buildDir =    "#{topDir}/build/"
+siteLib =     "#{buildDir}/lib/"
+siteLibArch = "#{siteLib}/#{execPlatform}"
 
-if (/mingw/ =~ RUBY_PLATFORM)
-  system("mkdir -p #{siteLibArch}/OIS")
-else
-  system("mkdir -p #{siteLibArch}/Enet")
-  system("cp -a #{BUILD_LIB_PATH}/* #{siteLibArch}/Enet")
-  system("cp -r #{BUILD}/include  #{topDir}/build")
-end
+ENET_INC = "-I#{buildDir}/include/ -I#{buildDir}/include/enet"
+ENET_LIB = "-rdynamic #{siteLibArch}/libenet.so -Wl,-rpath,.lib/#{execPlatform}"
 
 # set flags. 
 $CFLAGS += " -g -Dtime_t=long " + ENET_INC

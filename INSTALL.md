@@ -20,7 +20,9 @@
     Just make at top directory.  
 
     > $ cd \<topDir>  
+    > $ ./copylib   
     > $ make  
 
-    This make compiles a ruby extension library on ext/ with extlibs which are prepared above steps.   
-    And then it copies libraries from ext/ and ois/build/ to build/x86-\<arch>/.  
+    "copylib" copy libraries which are compiled above steps to build/lib/x86-\<arch>/.   
+    This "make" compiles a ruby extension library on ext/ using build/lib/x86-\<arch>/.   
+    And then it copies libraries from ext/ to x86-\<arch>/.  

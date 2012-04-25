@@ -31,6 +31,10 @@ class Server
 
         @peer = event.peer
 
+        hostName = "\0" * 16
+        ENet::enet_address_get_host_ip(@peer.address, hostName, 16)
+        puts hostName
+
         sendString = "packet"
         packet = ENet::enet_packet_create(sendString, sendString.length + 1, ENet::ENET_PACKET_FLAG_RELIABLE)
 
