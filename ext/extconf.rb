@@ -9,7 +9,8 @@ siteLib =     "#{buildDir}/lib/"
 siteLibArch = "#{siteLib}/#{execPlatform}"
 
 ENET_INC = "-I#{buildDir}/include/ -I#{buildDir}/include/enet"
-ENET_LIB = "-rdynamic #{siteLibArch}/libenet.so -Wl,-rpath,.lib/#{execPlatform}"
+ENET_LIB = "-L#{siteLibArch} -lenet"
+#ENET_LIB = "-rdynamic #{siteLibArch}/libenet.so -Wl,-rpath,.lib/#{execPlatform}"
 
 # set flags. 
 $CFLAGS += " -g -Dtime_t=long " + ENET_INC
