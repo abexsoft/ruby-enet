@@ -15,16 +15,18 @@ Linux, (Windows)
 Using libraries
 --------------
 
- * ruby : http://www.ruby-lang.org/
- * enet : http://enet.bespin.org/
+ * ruby : http://www.ruby-lang.org/  
+ * enet : http://enet.bespin.org/  
+ * swig : http://www.swig.org/  
 
 Thank you for your contributions.
 
 
 Usages
 -----
-This project has pre-compiled extention libraries(x86-linux).  
-see ./build
+This project has a pre-compiled gem.
+
+    > $ sudo gem install pkg/ruby-bullet-<version>-<arch>.gem
 
 
 How to compile

@@ -1,7 +1,7 @@
 .PHONY: clean
 
 SWIG = swig
-SWIGFLAGS = -ruby -I../../build/include/enet
+SWIGFLAGS = -ruby -I../src/build/include/enet
 RUBY = ruby
 
 TARGET = enet_wrap.c
