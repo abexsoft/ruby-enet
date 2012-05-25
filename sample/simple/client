@@ -1,13 +1,4 @@
-#!/usr/bin/env ruby
+#!/bin/bash
+export LD_LIBRARY_PATH=../../lib:$LD_LIBRARY_PATH
 
-require "../InitEnv.rb"
-require "ENet.so"
-
-require "Client.rb"
-
-client = Client.new
-client.setup
-client.connect
-while(true)
-	client.update
-end
+/usr/bin/env ruby ./Client.rb

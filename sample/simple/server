@@ -1,12 +1,7 @@
-#!/usr/bin/env ruby
+#!/bin/bash
+export LD_LIBRARY_PATH=../../lib:$LD_LIBRARY_PATH
 
-require "../InitEnv.rb"
-require "ENet.so"
+/usr/bin/env ruby ./Server.rb
 
-require "Server.rb"
 
-server = Server.new
-server.setup
-while(true)
-	server.update
-end
+

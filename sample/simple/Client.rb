@@ -1,3 +1,5 @@
+require "ENet.so"
+
 class Client
   def initialize()
     if (ENet::enet_initialize() != 0)
@@ -61,4 +63,11 @@ class Client
       end
     end
   end
+end
+
+client = Client.new
+client.setup
+client.connect
+while(true)
+	client.update
 end

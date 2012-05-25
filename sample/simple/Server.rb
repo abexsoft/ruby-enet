@@ -1,3 +1,4 @@
+require "ENet"
 
 class Server
   def initialize()
@@ -48,4 +49,11 @@ class Server
       end
     end
   end
+end
+
+
+server = Server.new
+server.setup
+while(true)
+	server.update
 end
